@@ -1,6 +1,6 @@
-# AI-Powered Smart Search & Recommendation System
+# SearchAI-Hub
 
-A full-stack application featuring an intelligent search and recommendation engine. The frontend is built with React/TypeScript, and the backend uses a hybrid Express.js + Flask architecture powered by BERT-based ML models.
+A full-stack application featuring an intelligent search and recommendation engine. The frontend is built with React/TypeScript, and the backend uses a hybrid Express.js.
 
 ---
 
