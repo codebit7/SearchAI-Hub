@@ -8,11 +8,11 @@ A full-stack application featuring an intelligent search and recommendation engi
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  React Frontend  │    │  Express Server │    │  Flask Server   │
+│  React Frontend  │    │  Express Server │   │Gemenini LLM Model│
 │                 │◄──►│                 │◄──►│                 │
-│  - Vite + TS    │    │  - Authentication│    │  - BERT Models  │
+│  - Vite + TS    │    │  - Authentication│
 │  - shadcn-ui    │    │  - Web Scraping │    │  - Recommendations│
-│  - Tailwind CSS │    │  - NLP Processing│    │  - ML Pipeline  │
+│  - Tailwind CSS │    │  - NLP Processing│    │  - Comparison  │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │
                                 ▼
@@ -39,11 +39,11 @@ A full-stack application featuring an intelligent search and recommendation engi
 
 ### Backend
 - **Express.js** (Port 3000) — API server, authentication, web scraping, NLP
-- **Flask** (Port 5000) — BERT-based ML recommendations
+- **Gemini**  —  recommendations,comparison
 - **Supabase** — PostgreSQL database with pgvector for vector similarity search
 
 ### Key Libraries
-- **BERT / Sentence Transformers** — Natural language processing
+- **Sentence Transformers** — Natural language processing
 - **Puppeteer & Cheerio** — Web scraping and HTML parsing
 - **Natural** — NLP utilities
 - **pgvector** — Vector similarity search
@@ -75,15 +75,7 @@ project-root/
 │   │   ├── package.json
 │   │   └── .env
 │   ├── flask-server/
-│   │   ├── models/
-│   │   │   └── recommendation_model.py
-│   │   ├── routes/
-│   │   │   ├── health.py
-│   │   │   └── recommendations.py
-│   │   ├── app.py
-│   │   ├── config.py
-│   │   ├── requirements.txt
-│   │   └── .env
+|   | 
 │   └── database/
 │       └── schema.sql
 └── README.md
@@ -94,8 +86,8 @@ project-root/
 ## Prerequisites
 
 - Node.js v16 or higher & npm
-- Python v3.8 or higher
 - A Supabase account and project
+-Gemini LLM model API
 
 ---
 
@@ -129,9 +121,6 @@ You can also edit files directly in GitHub or use GitHub Codespaces:
 cd backend/express-server
 npm install
 
-# Install Flask server dependencies
-cd ../flask-server
-pip install -r requirements.txt
 ```
 
 ### 4. Environment Configuration
@@ -149,15 +138,6 @@ NODE_ENV=development
 FLASK_SERVER_URL=http://localhost:5000
 ```
 
-#### Flask Server (`backend/flask-server/.env`)
-```bash
-cp env.example .env
-```
-```env
-FLASK_ENV=development
-PORT=5000
-SECRET_KEY=your-secret-key-here
-SENTENCE_TRANSFORMER_MODEL=all-MiniLM-L6-v2
 ```
 
 ### 5. Database Setup
@@ -173,11 +153,8 @@ SENTENCE_TRANSFORMER_MODEL=all-MiniLM-L6-v2
 cd backend/express-server
 npm run dev
 
-# Terminal 2 — Flask server
-cd backend/flask-server
-python app.py
 
-# Terminal 3 — Frontend
+# Terminal 2 — Frontend
 npm run dev
 ```
 
